@@ -1,5 +1,5 @@
 # CODO A CODO 4.0 2024 - BACK END
-### GRUPO 9 - COMISION N° 24181
+### GRUPO 8 - COMISION N° 24181
 
 
 [![descargar.png](https://i.postimg.cc/4NnB7hCg/descargar.png)](https://postimg.cc/nCbvNrcR)
@@ -7,7 +7,7 @@
 
 ## Introducción
 
-Este README proporciona una visión general del proyecto de programación Full Stack Codo a Codo 4.0 2024 - Comision N° 24181 - Grupo 9.
+Este README proporciona una visión general del proyecto de programación Full Stack Codo a Codo 4.0 2024 - Comision N° 24181 - Grupo 8.
 
 ## Descripción del proyecto
 
