@@ -1,21 +1,21 @@
 /* Estilos para todo el proyecto */
-*{
+* {
     font-family: 'Roboto', sans-serif;
     margin: 0;
 }
 
 body {
-    background-color: lightskyblue;
-    color:white;
+    background-color: #302f2f;
+    color: #333;
 }
 
 .contenedor-centrado {
-    display:flex;
+    display: flex;
     width: 100%;
     justify-content: center;
 }
 
-.logo-centrado{
+.logo-centrado {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,27 +26,27 @@ body {
 
 .logo-centrado img {
     border-radius: 10px;
+    width: 150px;
+    height: 150px;
 }
 
-.navbar-index{
+.navbar-index {
     margin: 0;
     padding: 0;
-    
     top: 0;
     width: 100vw;
     height: 100px;
-    background-color: #390E8C;
+    background-color: #005f73;
     display: flex;
     justify-content: flex-start;
-    align-items: center; 
-    
+    align-items: center;
     overflow: hidden;
     margin-bottom: 20px;
-    position: fixed !important; 
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    position: fixed !important;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.logo-nav{
+.logo-nav {
     height: 80%;
     overflow: hidden;
     margin-left: 1em;
@@ -54,42 +54,42 @@ body {
 
 p {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
+    color: #333;
 }
 
 h1, h2 {
     text-align: center;
-    color: #1d1a39;
+    color: rgb(140, 172, 1);
 }
 
 form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #1d1a39;
-    border: 1px solid lightslategray;
-    border-radius: 5px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
     border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 table {
     max-width: 90%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #1d1a39;
-    border: 1px solid lightslategray;
-    border-radius: 5px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
     border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    color: #333;
 }
 
 input[type="text"],
@@ -98,13 +98,13 @@ textarea {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #cccccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 input[type="submit"] {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #0a9396;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -112,13 +112,13 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #005f73;
 }
 
 button {
     padding: 8px;
-    margin:4px;
-    background-color: #007bff;
+    margin: 4px;
+    background-color: #0a9396;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -126,15 +126,15 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #005f73;
 }
 
 a {
     padding: 8px;
-    margin:4px;
-    background-color: rgb(248, 202, 53);
-    color: #1d1a39;
-    border: 2px #1d1a39 dashed;
+    margin: 4px;
+    background-color: rgb(140, 172, 1);
+    color: #333;
+    border: 2px dashed #333;
     border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
@@ -143,7 +143,7 @@ a {
 }
 
 a:hover {
-    background-color: #1d1a39;
-    border: 1px white solid;
-    color: white;
+    background-color: #333;
+    border: 1px solid #fff;
+    color: #ffffff;
 }
