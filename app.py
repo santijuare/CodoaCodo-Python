@@ -78,7 +78,7 @@ class Catalogo:
             print("Producto no encontrado.")
 
     def agregar_producto(self, descripcion, cantidad, precio, imagen):
-        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url) VALUES (%s, %s, %s, %s, %s)"
+        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url) VALUES (%s, %s, %s, %s)"
         valores = (descripcion, cantidad, precio, imagen)
 
         self.cursor.execute(sql,valores)
