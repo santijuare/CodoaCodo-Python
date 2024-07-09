@@ -46,8 +46,7 @@ class Catalogo:
             descripcion VARCHAR(255) NOT NULL,
             cantidad INT NOT NULL,
             precio DECIMAL(10, 2) NOT NULL,
-            imagen_url VARCHAR(255),
-            proveedor INT(4))''')
+            imagen_url VARCHAR(255)''')
         self.conn.commit()
 
         # Cerrar el cursor inicial y abrir uno nuevo con el parámetro dictionary=True
@@ -74,22 +73,21 @@ class Catalogo:
             print(f"Cantidad...: {producto['cantidad']}")
             print(f"Precio.....: {producto['precio']}")
             print(f"Imagen.....: {producto['imagen_url']}")
-            print(f"Proveedor..: {producto['proveedor']}")
             print("-" * 40)
         else:
             print("Producto no encontrado.")
 
-    def agregar_producto(self, descripcion, cantidad, precio, imagen, proveedor):
-        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url, proveedor) VALUES (%s, %s, %s, %s, %s)"
-        valores = (descripcion, cantidad, precio, imagen, proveedor)
+    def agregar_producto(self, descripcion, cantidad, precio, imagen):
+        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url) VALUES (%s, %s, %s, %s, %s)"
+        valores = (descripcion, cantidad, precio, imagen)
 
         self.cursor.execute(sql,valores)
         self.conn.commit()
         return self.cursor.lastrowid
 
-    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen, nuevo_proveedor):
-        sql = "UPDATE productos SET descripcion = %s, cantidad = %s, precio = %s, imagen_url = %s, proveedor = %s WHERE codigo = %s"
-        valores = (nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen, nuevo_proveedor, codigo)
+    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen):
+        sql = "UPDATE productos SET descripcion = %s, cantidad = %s, precio = %s, imagen_url = %s = %s WHERE codigo = %s"
+        valores = (nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen, codigo)
 
         self.cursor.execute(sql, valores)
         self.conn.commit()
@@ -135,7 +133,6 @@ def agregar_producto():
     cantidad = request.form['cantidad']
     precio = request.form['precio']
     imagen = request.files['imagen']
-    proveedor = request.form['proveedor']
     nombre_imagen = ""
 
     # Genero el nombre de la imagen
@@ -143,7 +140,7 @@ def agregar_producto():
     nombre_base, extension = os.path.splitext(nombre_imagen)
     nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
 
-    nuevo_codigo = catalogo.agregar_producto(descripcion, cantidad, precio, nombre_imagen, proveedor)
+    nuevo_codigo = catalogo.agregar_producto(descripcion, cantidad, precio, nombre_imagen)
     if nuevo_codigo:
         imagen.save(os.path.join(ruta_destino, nombre_imagen))
         return jsonify({"mensaje": "Producto agregado correctamente.", "codigo": nuevo_codigo, "imagen": nombre_imagen}), 201
@@ -156,7 +153,6 @@ def modificar_producto(codigo):
     nueva_descripcion = request.form.get("descripcion")
     nueva_cantidad = request.form.get("cantidad")
     nuevo_precio = request.form.get("precio")
-    nuevo_proveedor = request.form.get("proveedor")
 
     # Verifica si se proporcionó una nueva imagen
     if 'imagen' in request.files:
@@ -185,7 +181,7 @@ def modificar_producto(codigo):
             nombre_imagen = producto["imagen_url"]
 
    # Se llama al método modificar_producto pasando el codigo del producto y los nuevos datos.
-    if catalogo.modificar_producto(codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nombre_imagen, nuevo_proveedor):
+    if catalogo.modificar_producto(codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nombre_imagen):
         return jsonify({"mensaje": "Producto modificado"}), 200
     else:
         return jsonify({"mensaje": "Producto no encontrado"}), 403
