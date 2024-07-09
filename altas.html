@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar producto</title>
+    <link rel="stylesheet" href="./static/css/estilos.css">
+</head>
+
+<body>
+    <div class="logo-centrado">
+        <img src="./static/imagenes/DHARMA.png" alt="logo">
+    </div>
+    <h1>Agregar Productos al Inventario</h1><br>
+
+    <form id="formulario" enctype="multipart/form-data"> 
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required><br>
+
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" id="precio" name="precio" required><br>
+
+        <label for="imagenProducto">Imagen del producto:</label>
+        <input type="file" id="imagenProducto" name="imagen">
+
+        <br><br>
+        <label for="proveedorProducto">Proveedor:</label>
+        <input type="text" id="proveedorProducto" name="proveedor">
+
+        <button type="submit">Agregar Producto</button>
+        <a href="index.html">Menu principal</a>
+    </form>
+
+    <script>
+
+       const URL = "https://Tiagos84.pythonanywhere.com/"
+
+        document.getElementById('formulario').addEventListener('submit', function (event) {
+            event.preventDefault(); 
+
+            var formData = new FormData(this);
+
+            fetch(URL + 'productos', { 
+                method: 'POST',
+                body: formData 
+            })
+
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error al agregar el producto.');
+                    }
+                })
+
+                .then(function (data) {
+                    alert('Producto agregado correctamente.');
+                })
+
+                .catch(function (error) {
+                    alert('Error al agregar el producto.');
+                })
+
+                .finally(function () {
+                    document.getElementById('descripcion').value = "";
+                    document.getElementById('cantidad').value = "";
+                    document.getElementById('precio').value = "";
+                    document.getElementById('imagenProducto').value = "";
+                    document.getElementById('proveedorProducto').value = "";
+                });
+        })
+    </script>
+</body>
+
+</html>
