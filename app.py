@@ -110,9 +110,9 @@ catalogo = Catalogo(host=bd.host, user=bd.user, password=bd.password, database=b
 # Carpeta para guardar las imagenes
 #ruta_destino = './static/imagenes/' # Reemplazar por los datos de Pythonanywhere
 
-# ruta_destino = '/home/Tiagos84/mysite/static/imagenes/'
+ruta_destino = '/home/Tiagos84/mysite/static/imagenes/'
 
-ruta_destino = 'https://www.pythonanywhere.com/user/Tiagos84/files/home/Tiagos84/mysite/static/imagenes'
+# ruta_destino = 'https://www.pythonanywhere.com/user/Tiagos84/files/home/Tiagos84/mysite/static/imagenes'
 
 @app.route("/productos", methods=["GET"])
 def listar_productos():
