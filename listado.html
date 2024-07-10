@@ -15,15 +15,14 @@
     </div>
     <h1>Listado de Productos del Inventario</h1><br>
 
-    <table> 
-        <thead> 
+    <table>
+        <thead>
             <tr>
                 <th>Código</th>
                 <th>Descripción</th>
                 <th>Cantidad</th>                
                 <th align="right">Precio</th>
                 <th>Imagen</th>
-                
             </tr>
         </thead>
         <tbody id="tablaProductos"> </tbody>
@@ -46,7 +45,6 @@
 
             .then(function (data) {
                 let tablaProductos = document.getElementById('tablaProductos'); 
-
                 for (let producto of data) {
                     let fila = document.createElement('tr'); 
                     fila.innerHTML = '<td>' + producto.codigo + '</td>' +
@@ -57,7 +55,6 @@
                     tablaProductos.appendChild(fila);
                 }
             })
-
             .catch(function (error) {
                 alert('Error al obtener los productos.');
             });
