@@ -86,7 +86,7 @@ class Catalogo:
         return self.cursor.lastrowid
 
     def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen):
-        sql = "UPDATE productos SET descripcion = %s, cantidad = %s, precio = %s, imagen_url = %s = %s WHERE codigo = %s"
+        sql = "UPDATE productos SET descripcion = %s, cantidad = %s, precio = %s, imagen_url = %s WHERE codigo = %s"
         valores = (nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen, codigo)
 
         self.cursor.execute(sql, valores)
@@ -107,11 +107,12 @@ class Catalogo:
 catalogo = Catalogo(host=bd.host, user=bd.user, password=bd.password, database=bd.database)
 # las variables con los datos de la conexion estan guardadas en el archivo datosconexion.py
 
-
 # Carpeta para guardar las imagenes
 #ruta_destino = './static/imagenes/' # Reemplazar por los datos de Pythonanywhere
 
-ruta_destino = '/home/Tiagos84/mysite/static/imagenes/'
+# ruta_destino = '/home/Tiagos84/mysite/static/imagenes/'
+
+ruta_destino = 'https://www.pythonanywhere.com/user/Tiagos84/files/home/Tiagos84/mysite/static/imagenes'
 
 @app.route("/productos", methods=["GET"])
 def listar_productos():
